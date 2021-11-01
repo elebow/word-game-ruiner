@@ -1,0 +1,13 @@
+name: word-game-ruiner
+version: 0.1.0
+
+authors:
+  - Eddie Lebow <elebow@users.noreply.github.com>
+
+targets:
+  word-game-ruiner:
+    main: src/word-game-ruiner.cr
+
+crystal: 1.2.1
+
+license: MIT

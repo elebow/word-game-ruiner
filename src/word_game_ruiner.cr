@@ -48,16 +48,7 @@ if mode == :generate
   end
 
   converter = WordlistConverter.new(wordlist_file)
-  json_output = JSON.build do |json|
-    json.object do
-      converter.next_words.each do |word, nexts|
-        json.field word do
-          json.array { nexts.map { |n| json.string n } }
-        end
-      end
-    end
-  end
-  File.write(output_file, json_output)
+  File.write(output_file, converter.to_json)
 elsif mode == :next
   unless nextwords_file.size > 0
     STDERR.puts "nextwords list is required. Use generate mode first."

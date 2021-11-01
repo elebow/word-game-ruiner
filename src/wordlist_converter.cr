@@ -22,6 +22,18 @@ class WordlistConverter
     populate_next_words
   end
 
+  def to_json
+    JSON.build do |json|
+      json.object do
+        next_words.each do |word, nexts|
+          json.field word do
+            json.array { nexts.map { |n| json.string n } }
+          end
+        end
+      end
+    end
+  end
+
   private def populate_next_words
     channel = Channel(Nil).new
 
